@@ -1,0 +1,81 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    color: #d4c5b0;
+}
+
+window {
+    background-color: #261b12;
+    border: 1px solid rgba(100, 78, 58, 0.6);
+    border-radius: 12px;
+}
+
+/* Toolbar buttons */
+button {
+    background: rgba(100, 78, 58, 0.45);
+    color: #d4c5b0;
+    border: 1px solid rgba(100, 78, 58, 0.55);
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+button:hover {
+    background: rgba(196, 132, 90, 0.3);
+    color: #e8d8c0;
+    border-color: #c4845a;
+}
+
+button:active {
+    background: rgba(196, 132, 90, 0.45);
+}
+
+/* Search entry */
+entry {
+    background: rgba(100, 78, 58, 0.3);
+    color: #d4c5b0;
+    border: 1px solid rgba(100, 78, 58, 0.55);
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+entry:focus {
+    border-color: #c4845a;
+}
+
+/* Thumbnail grid */
+flowboxchild {
+    border-radius: 6px;
+    padding: 3px;
+}
+
+flowboxchild:selected,
+flowboxchild:hover {
+    background: rgba(196, 132, 90, 0.25);
+}
+
+/* Scrollbar */
+scrollbar {
+    background: transparent;
+}
+
+scrollbar slider {
+    background: rgba(100, 78, 58, 0.6);
+    border-radius: 4px;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrollbar slider:hover {
+    background: #c4845a;
+}
+
+/* Bottom bar dropdowns */
+combobox button,
+combobox button:hover {
+    padding: 2px 6px;
+}
+
+/* Separator */
+separator {
+    background: rgba(100, 78, 58, 0.5);
+}

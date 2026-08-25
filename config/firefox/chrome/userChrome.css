@@ -1,0 +1,53 @@
+/* ── Cyrodiil Firefox Chrome — warm earthy palette ── */
+
+:root {
+    --toolbar-bgcolor:          #1e1610 !important;
+    --toolbar-color:            #d4c5b0 !important;
+    --lwt-accent-color:         #1e1610 !important;
+    --lwt-text-color:           #d4c5b0 !important;
+    --tab-selected-bgcolor:     #2a1f14 !important;
+    --tab-bgcolor:              #1a1410 !important;
+    --lwt-selected-tab-border-color: #c4845a !important;
+    --urlbar-box-bgcolor:       #2a1f14 !important;
+    --urlbar-box-focus-bgcolor: #332518 !important;
+    --urlbar-box-hover-bgcolor: #332518 !important;
+    --urlbar-box-text-color:    #d4c5b0 !important;
+}
+
+/* Tab bar background */
+#TabsToolbar {
+    background-color: #1a1410 !important;
+}
+
+/* Active tab */
+.tabbrowser-tab[selected] .tab-background {
+    background-color: #2a1f14 !important;
+}
+
+/* Inactive tabs hover */
+.tabbrowser-tab:not([selected]):hover .tab-background {
+    background-color: #221810 !important;
+}
+
+/* Navbar / toolbar */
+#nav-bar {
+    background-color: #1e1610 !important;
+    border-bottom: 1px solid #3a2a1a !important;
+}
+
+/* URL bar */
+#urlbar-background {
+    background-color: #2a1f14 !important;
+    border-color: #3a2a1a !important;
+}
+
+#urlbar[focused] #urlbar-background {
+    background-color: #332518 !important;
+    border-color: #c4845a !important;
+}
+
+/* Sidebar (if used) */
+#sidebar-box {
+    background-color: #221810 !important;
+    color: #b0a090 !important;
+}

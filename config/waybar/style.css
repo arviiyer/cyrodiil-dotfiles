@@ -1,0 +1,185 @@
+/* ── Cyrodiil Waybar ─────────────────────────────────────────────────────── */
+/* Palette: warm grays, terracotta, sand, olive                               */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    background: rgba(34, 26, 18, 0.92);
+    color: #d4c5b0;
+    border-radius: 12px;
+    border: 1px solid rgba(100, 78, 58, 0.5);
+}
+
+/* ── Left ────────────────────────────────────────────────────────────────── */
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #7a6a60;
+    background: transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(196, 112, 79, 0.15);
+    color: #d4c5b0;
+}
+
+#workspaces button.active {
+    color: #c4704f;
+    background: rgba(196, 112, 79, 0.2);
+}
+
+#workspaces button.urgent {
+    color: #e8805a;
+    background: rgba(232, 128, 90, 0.2);
+}
+
+#window {
+    padding: 0 12px;
+    color: #9a8a7a;
+    font-size: 12px;
+}
+
+/* ── Center ──────────────────────────────────────────────────────────────── */
+
+#clock {
+    color: #d4c5b0;
+    padding: 0 16px;
+    font-weight: 500;
+}
+
+/* ── Right ───────────────────────────────────────────────────────────────── */
+
+#bluetooth,
+#wireplumber,
+#custom-brightness,
+#network,
+#battery,
+#tray {
+    padding: 0 10px;
+    color: #b0a090;
+    font-size: 15px;
+}
+
+#bluetooth:hover,
+#wireplumber:hover,
+#custom-brightness:hover,
+#network:hover,
+#battery:hover {
+    color: #d4c5b0;
+    background: rgba(196, 112, 79, 0.1);
+    border-radius: 8px;
+}
+
+#pulseaudio.muted {
+    color: #5a4a40;
+}
+
+#battery.charging,
+#battery.not-charging,
+#battery.full {
+    color: #b0a090;
+}
+
+#battery.warning:not(.charging) {
+    color: #c4904f;
+}
+
+#battery.critical:not(.charging) {
+    color: #c45040;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    to { opacity: 0.4; }
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+#custom-power {
+    padding: 0 20px 0 10px;
+    color: #b0a090;
+    font-size: 18px;
+}
+
+#custom-power:hover {
+    color: #c45040;
+    background: rgba(196, 80, 64, 0.1);
+    border-radius: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+/* ── Notification center ─────────────────────────────────────────────────── */
+#custom-swaync {
+    padding: 0 10px;
+    color: #b0a090;
+    font-size: 15px;
+}
+
+#custom-swaync.notification {
+    color: #c4845a;
+}
+
+#custom-swaync.dnd-notification,
+#custom-swaync.dnd-none {
+    color: #5a4a40;
+}
+
+#custom-swaync:hover {
+    color: #d4c5b0;
+    background: rgba(196, 132, 90, 0.15);
+    border-radius: 8px;
+}
+
+/* ── Updates ─────────────────────────────────────────────────────────────── */
+#custom-updates {
+    padding: 0 10px;
+    color: #b0a090;
+}
+
+#custom-updates.has-updates {
+    color: #c4845a;
+}
+
+#custom-updates:hover {
+    color: #d4c5b0;
+    background: rgba(196, 132, 90, 0.15);
+    border-radius: 8px;
+}
+
+/* ── System stats ────────────────────────────────────────────────────────── */
+#cpu,
+#memory,
+#temperature {
+    padding: 0 6px;
+    color: #b0a090;
+    font-size: 15px;
+}
+
+#temperature.critical {
+    color: #c45040;
+}
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover {
+    color: #d4c5b0;
+}

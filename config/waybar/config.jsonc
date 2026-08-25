@@ -1,0 +1,175 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "margin-top": 6,
+    "margin-left": 12,
+    "margin-right": 12,
+    "spacing": 4,
+    "exclusive": true,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "custom/updates",
+        "bluetooth",
+        "wireplumber",
+        "custom/brightness",
+        "group/stats",
+        "network",
+        "battery",
+        "tray",
+        "custom/swaync",
+        "custom/power"
+    ],
+
+    // ── Workspaces ────────────────────────────────────────────────────────────
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+
+    // ── Window title ──────────────────────────────────────────────────────────
+    "hyprland/window": {
+        "max-length": 60,
+        "separate-outputs": true
+    },
+
+    // ── Clock ─────────────────────────────────────────────────────────────────
+    "clock": {
+        "format": " {:%a %d %b  %H:%M}",
+        "tooltip": false,
+        "interval": 60,
+        "on-click": "~/.config/waybar/scripts/toggle-calendar.sh"
+    },
+
+    // ── Bluetooth ─────────────────────────────────────────────────────────────
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱 {device_alias}",
+        "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "  {device_alias}",
+        "on-click": "blueman-manager"
+    },
+
+    // ── Brightness ────────────────────────────────────────────────────────────
+    "custom/brightness": {
+        "exec": "brightnessctl -m | cut -d, -f4",
+        "interval": 2,
+        "format": "󰃟 {}",
+        "on-scroll-up": "brightnessctl s +5%",
+        "on-scroll-down": "brightnessctl s 5%-",
+        "tooltip": false
+    },
+
+    // ── Audio (WirePlumber) ───────────────────────────────────────────────────
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "scroll-step": 5
+    },
+
+    // ── Network ───────────────────────────────────────────────────────────────
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰤭 offline",
+        "tooltip-format": "{ifname}: {ipaddr}\n{signalStrength}% signal",
+        "on-click": "ghostty -e nmtui"
+    },
+
+    // ── Battery ───────────────────────────────────────────────────────────────
+    "battery": {
+        "interval": 30,
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-not-charging": "󰚥 {capacity}%",
+        "format-full": "󰚥 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "{timeTo}\nHealth: {health}%"
+    },
+
+    // ── Power ─────────────────────────────────────────────────────────────────
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "~/.config/hypr/scripts/powermenu.sh",
+        "tooltip": false
+    },
+
+    // ── Tray ──────────────────────────────────────────────────────────────────
+    "tray": {
+        "spacing": 8,
+        "icon-size": 16
+    },
+
+    // ── Notification center (swaync) ──────────────────────────────────────────
+    "custom/swaync": {
+        "exec": "swaync-client --subscribe-waybar",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "none":             "󰂚",
+            "notification":     "󰂚",
+            "dnd-none":         "󰂛",
+            "dnd-notification": "󰂛"
+        },
+        "on-click": "swaync-client --toggle-panel --skip-wait",
+        "on-click-right": "swaync-client --toggle-dnd --skip-wait",
+        "tooltip": false
+    },
+
+    // ── Updates ───────────────────────────────────────────────────────────────
+    "custom/updates": {
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "on-click": "ghostty --title=system-update -e ~/.config/waybar/scripts/system-update.sh"
+    },
+
+    // ── System stats (hover to expand) ────────────────────────────────────────
+    "group/stats": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        },
+        "modules": ["cpu", "memory", "temperature"]
+    },
+
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "󰍛 {used:0.1f}G",
+        "interval": 2,
+        "tooltip-format": "{used:0.1f}G used / {total:0.1f}G total",
+        "tooltip": true
+    },
+
+    "temperature": {
+        "format": "󰔏 {temperatureC}°C",
+        "critical-threshold": 85,
+        "format-critical": "󰔏 {temperatureC}°C",
+        "interval": 2,
+        "tooltip": false
+    }
+}

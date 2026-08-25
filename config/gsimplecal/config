@@ -1,0 +1,8 @@
+show_week_numbers = 0
+show_heading = 1
+show_calendar = 1
+close_on_unfocus = 1
+window_alpha = 220
+mainwindow_position = none
+mainwindow_xoffset = 0
+mainwindow_yoffset = 0

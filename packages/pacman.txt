@@ -1,0 +1,73 @@
+# Core tools
+git
+base-devel
+paru
+pciutils
+python
+xdg-user-dirs
+
+# Hyprland session
+hyprland
+uwsm
+xorg-xwayland
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-gnome
+greetd
+greetd-tuigreet
+
+# Desktop components
+waybar
+swaync
+awww
+waypaper
+hypridle
+hyprlock
+hyprsunset
+ghostty
+rofi
+rofi-calc
+libqalculate
+wl-clipboard
+cliphist
+gsimplecal
+
+# Screenshots and controls
+brightnessctl
+grim
+slurp
+libnotify
+playerctl
+pavucontrol
+jq
+openbsd-netcat
+pacman-contrib
+
+# Audio, network, and Bluetooth
+pipewire
+pipewire-pulse
+wireplumber
+networkmanager
+bluez
+bluez-utils
+blueman
+
+# Applications used by the default keybindings
+firefox
+nautilus
+neovim
+
+# Toolkit integration and appearance
+gtk3
+gtk4
+qt6ct
+qt6-wayland
+papirus-icon-theme
+ttf-jetbrains-mono-nerd
+
+# Shell
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-history-substring-search

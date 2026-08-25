@@ -1,0 +1,104 @@
+/* ── Cyrodiil Rofi theme ────────────────────────────────────────────────── */
+/* Palette: warm grays, terracotta, sand                                      */
+
+* {
+    bg0:     #1a1410;
+    bg1:     #241c14;
+    bg2:     #2e2218;
+    border:  #644e3acc;
+    accent:  #c4845a;
+    fg0:     #d4c5b0;
+    fg1:     #9a8a7a;
+    fg2:     #6a5a50;
+
+    background-color: transparent;
+    text-color:       @fg0;
+    font:             "JetBrainsMono Nerd Font 13";
+}
+
+window {
+    background-color: @bg0;
+    border:           2px solid;
+    border-color:     @border;
+    border-radius:    12px;
+    width:            520px;
+    padding:          0;
+}
+
+mainbox {
+    background-color: transparent;
+    padding:          12px;
+    spacing:          8px;
+}
+
+inputbar {
+    background-color: @bg1;
+    border-radius:    8px;
+    padding:          10px 14px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color:       @accent;
+    font:             "JetBrainsMono Nerd Font Bold 13";
+}
+
+entry {
+    text-color:       @fg0;
+    placeholder:      "Search apps...";
+    placeholder-color: @fg2;
+}
+
+listview {
+    background-color: transparent;
+    lines:            8;
+    columns:          1;
+    spacing:          2px;
+    scrollbar:        false;
+    padding:          4px 0 0 0;
+}
+
+element {
+    background-color: transparent;
+    border-radius:    8px;
+    padding:          8px 12px;
+    spacing:          10px;
+    orientation:      horizontal;
+    children:         [ element-icon, element-text ];
+}
+
+element.selected.normal {
+    background-color: #c4845a22;
+    text-color:       @fg0;
+}
+
+element.normal.normal {
+    text-color: @fg1;
+}
+
+element.urgent {
+    text-color: #c45040;
+}
+
+element-icon {
+    size:             20px;
+    vertical-align:   0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color:     inherit;
+}
+
+/* ── No results ──────────────────────────────────────────────────────────── */
+message {
+    background-color: @bg1;
+    border-radius:    8px;
+    padding:          8px 12px;
+    margin:           4px 0 0 0;
+}
+
+textbox {
+    text-color: @fg1;
+}

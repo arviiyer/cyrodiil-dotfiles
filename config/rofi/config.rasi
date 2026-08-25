@@ -1,0 +1,21 @@
+/* ── Cyrodiil Rofi config ───────────────────────────────────────────────── */
+
+configuration {
+    modi:            "drun,run,calc";
+    show-icons:      true;
+    icon-theme:      "Papirus-Dark";
+    terminal:        "ghostty";
+    drun-display-format: "{name}";
+    display-drun:        "";
+    display-run:         " run";
+    display-calc:        "󰃬 calc";
+    hover-select:    true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+
+    /* calc */
+    calc-command:      "wl-copy '{result}'";
+    show-calc-hint:    true;
+}
+
+@theme "~/.config/rofi/theme.rasi"

@@ -1,0 +1,66 @@
+# ── Cyrodiil Ghostty config ───────────────────────────────────────────────────
+
+# Always open new windows in home directory
+working-directory = home
+
+# ── Font ──────────────────────────────────────────────────────────────────────
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+
+# ── Transparency ──────────────────────────────────────────────────────────────
+background-opacity = 0.92
+
+# ── Colors — warm earthy palette ──────────────────────────────────────────────
+background = #1a1410
+foreground = #d4c5b0
+
+# Black
+palette = 0=#2a1f18
+palette = 8=#4a3830
+
+# Red
+palette = 1=#c45040
+palette = 9=#d4604e
+
+# Green
+palette = 2=#7a9a50
+palette = 10=#8aaa60
+
+# Yellow
+palette = 3=#c4904f
+palette = 11=#d4a460
+
+# Blue (muted, warm-toned)
+palette = 4=#6a7a9a
+palette = 12=#7a8aaa
+
+# Magenta (warm purple/rose)
+palette = 5=#9a6a7a
+palette = 13=#aa7a8a
+
+# Cyan (warm teal)
+palette = 6=#6a9a8a
+palette = 14=#7aaaa0
+
+# White
+palette = 7=#b0a090
+palette = 15=#d4c5b0
+
+# ── Cursor ────────────────────────────────────────────────────────────────────
+cursor-color = #c4845a
+cursor-style = block
+cursor-style-blink = false
+
+# ── Selection ─────────────────────────────────────────────────────────────────
+selection-background = #3d2a1a
+selection-foreground = #d4c5b0
+
+# ── Window ────────────────────────────────────────────────────────────────────
+window-padding-x = 12
+window-padding-y = 10
+window-decoration = false
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+scrollback-limit = 10000
+copy-on-select = clipboard
+mouse-hide-while-typing = false

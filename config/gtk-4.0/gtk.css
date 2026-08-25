@@ -1,0 +1,58 @@
+/* ── Cyrodiil GTK4 — warm earthy overrides ── */
+/* Define colors BEFORE importing theme so ours take priority */
+
+@define-color window_bg_color #2a1f14;
+@define-color window_fg_color #d4c5b0;
+@define-color view_bg_color #2a1f14;
+@define-color view_fg_color #d4c5b0;
+@define-color sidebar_bg_color #221810;
+@define-color sidebar_fg_color #b0a090;
+@define-color headerbar_bg_color #1e1610;
+@define-color headerbar_fg_color #d4c5b0;
+@define-color card_bg_color #332518;
+@define-color popover_bg_color #332518;
+@define-color accent_color #c4845a;
+@define-color accent_bg_color #c4845a;
+@define-color accent_fg_color #1a1410;
+
+@import url("/usr/share/themes/Gruvbox-Material-Dark/gtk-4.0/gtk.css");
+
+/* Direct overrides for stubborn elements */
+window, .background {
+    background-color: #2a1f14;
+}
+
+/* Nautilus sidebar — libadwaita uses these selectors */
+placessidebar,
+placessidebar > viewport,
+placessidebar > viewport > list,
+.sidebar,
+.sidebar-pane,
+navigationview,
+navigationview > .sidebar,
+leaflet > .sidebar,
+.nautilus-window .sidebar,
+AdwNavigationSplitView > .sidebar-pane,
+AdwNavigationSplitView > navigationview,
+.top-bar ~ * placessidebar {
+    background-color: #221810;
+    color: #b0a090;
+}
+
+headerbar {
+    background-color: #1e1610;
+}
+
+/* Normalize all headerbar buttons — consistent flat look */
+headerbar button,
+windowcontrols button {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+headerbar button:hover,
+windowcontrols button:hover {
+    background-color: rgba(196, 132, 90, 0.18);
+    border-radius: 6px;
+}
