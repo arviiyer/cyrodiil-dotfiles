@@ -17,12 +17,17 @@ done
 
 [ -z "$WIN_W" ] || [ "$WIN_W" -eq 0 ] && WIN_W=325
 
-# Logical monitor width
-MON_W=$(hyprctl monitors -j 2>/dev/null | jq -r '.[0] | (.width / .scale)' | awk '{print int($1)}')
-[ -z "$MON_W" ] && MON_W=1600
+# Logical geometry of the focused monitor, falling back to the first monitor.
+read -r MON_X MON_Y MON_W < <(hyprctl monitors -j 2>/dev/null | jq -r '
+    (map(select(.focused))[0] // .[0]) |
+    "\(.x) \(.y) \((.width / .scale) | floor)"
+')
+MON_X=${MON_X:-0}
+MON_Y=${MON_Y:-0}
+MON_W=${MON_W:-1600}
 
 # Center horizontally, just below waybar (36px height + 6px margin-top + ~12px gap)
-X=$(( (MON_W - WIN_W) / 2 ))
-Y=54
+X=$(( MON_X + (MON_W - WIN_W) / 2 ))
+Y=$(( MON_Y + 54 ))
 
 hyprctl dispatch movewindowpixel "exact ${X} ${Y},class:gsimplecal" 2>/dev/null

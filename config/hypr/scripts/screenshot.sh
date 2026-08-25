@@ -5,21 +5,28 @@
 #   --full: instant full screen
 #   --area: select an area (same as the default)
 
-SAVEDIR="$HOME/Pictures/Screenshots"
+PICTURES_DIR=$(xdg-user-dir PICTURES 2>/dev/null || true)
+PICTURES_DIR=${PICTURES_DIR:-$HOME/Pictures}
+SAVEDIR="$PICTURES_DIR/Screenshots"
 mkdir -p "$SAVEDIR"
 FILENAME="$SAVEDIR/$(date +%Y-%m-%d_%H-%M-%S).png"
+captured=false
 
 case "$1" in
     --full)
-        grim "$FILENAME" && notify-send "Screenshot" "Saved to $FILENAME" -t 2000
+        grim "$FILENAME" && captured=true
         ;;
     --area)
-        grim -g "$(slurp)" "$FILENAME" && notify-send "Screenshot" "Saved to $FILENAME" -t 2000
+        geometry=$(slurp) || exit 0
+        grim -g "$geometry" "$FILENAME" && captured=true
         ;;
     *)
-        grim -g "$(slurp)" "$FILENAME" && notify-send "Screenshot" "Saved to $FILENAME" -t 2000
+        geometry=$(slurp) || exit 0
+        grim -g "$geometry" "$FILENAME" && captured=true
         ;;
 esac
 
-# Copy to clipboard as well
-wl-copy < "$FILENAME"
+if $captured; then
+    notify-send "Screenshot" "Saved to $FILENAME" -t 2000
+    wl-copy < "$FILENAME"
+fi

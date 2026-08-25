@@ -1,2 +1,3 @@
 config/hypr/local.lua
+config/hypr/options.lua
 *.log

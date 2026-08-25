@@ -12,7 +12,13 @@ separator() {
 }
 
 separator "Updating official and AUR packages"
-paru -Syu --nodevel
+if command -v paru >/dev/null; then
+    paru -Syu
+elif command -v yay >/dev/null; then
+    yay -Syu
+else
+    sudo pacman -Syu
+fi
 
 echo ""
 echo "─────────────────────────────────────────────"

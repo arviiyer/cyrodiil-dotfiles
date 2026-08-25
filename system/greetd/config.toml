@@ -2,5 +2,5 @@
 vt = 1
 
 [default_session]
-command = "tuigreet --time --battery --remember --remember-session --sessions /usr/share/wayland-sessions --xsessions /usr/share/xsessions --cmd start-hyprland"
+command = "/usr/bin/tuigreet --time --battery --remember --remember-session --sessions /usr/share/wayland-sessions --cmd /usr/bin/start-hyprland"
 user = "greeter"

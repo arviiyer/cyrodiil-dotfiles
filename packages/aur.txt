@@ -1,3 +1,4 @@
+waypaper
 bibata-cursor-gruvbox-git
 gruvbox-material-gtk-theme-git
 gruvbox-material-icon-theme-git

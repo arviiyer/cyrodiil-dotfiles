@@ -5,10 +5,11 @@ set -euo pipefail
 ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)
 cd "$ROOT"
 
-bash -n install.sh restore.sh config/hypr/scripts/*.sh config/waybar/scripts/*.sh
+bash -n install.sh restore.sh tests/*.sh \
+    config/hypr/scripts/*.sh config/waybar/scripts/*.sh
 
 if command -v shellcheck >/dev/null; then
-    shellcheck install.sh restore.sh scripts/validate.sh \
+    shellcheck install.sh restore.sh scripts/validate.sh tests/*.sh \
         config/hypr/scripts/*.sh config/waybar/scripts/*.sh
 else
     printf 'warn: shellcheck is not installed; skipping it\n' >&2
@@ -50,7 +51,9 @@ license_blob=$(git hash-object --no-filters assets/wallpapers/LICENSE.GPL-2.0)
 [[ $license_blob == ce5dccf2cfeb934f88fe9a917342e54519813145 ]]
 
 if command -v Hyprland >/dev/null; then
-    Hyprland --verify-config --config "$ROOT/config/hypr/hyprland.lua"
+    CYRODIIL_SKIP_OPTIONS=1 Hyprland --verify-config --config "$ROOT/config/hypr/hyprland.lua"
 fi
+
+./tests/restore-display-manager.sh
 
 printf 'Validation passed.\n'

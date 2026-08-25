@@ -64,7 +64,7 @@ window#waybar {
 /* ── Right ───────────────────────────────────────────────────────────────── */
 
 #bluetooth,
-#wireplumber,
+#pulseaudio,
 #custom-brightness,
 #network,
 #battery,
@@ -75,7 +75,7 @@ window#waybar {
 }
 
 #bluetooth:hover,
-#wireplumber:hover,
+#pulseaudio:hover,
 #custom-brightness:hover,
 #network:hover,
 #battery:hover {

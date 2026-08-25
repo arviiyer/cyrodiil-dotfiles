@@ -53,11 +53,6 @@ hl.config({
         focus_on_activate = false,
         render_unfocused_fps = 30, -- Save GPU time for active tasks.
     },
-
-    render = {
-        -- Direct scanout causes blank screens with some games on NVIDIA.
-        direct_scanout = false,
-    },
 })
 
 hl.curve("ease", { type = "bezier", points = { { 0.25, 0.1 }, { 0.25, 1.0 } } })

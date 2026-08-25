@@ -19,7 +19,7 @@
     "modules-right": [
         "custom/updates",
         "bluetooth",
-        "wireplumber",
+        "pulseaudio",
         "custom/brightness",
         "group/stats",
         "network",
@@ -55,10 +55,12 @@
         "format": "󰂯",
         "format-connected": "󰂱 {device_alias}",
         "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
+        "format-disabled": "",
+        "format-no-controller": "",
         "tooltip-format": "{controller_alias}\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "  {device_alias}",
-        "on-click": "blueman-manager"
+        "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh"
     },
 
     // ── Brightness ────────────────────────────────────────────────────────────
@@ -71,12 +73,12 @@
         "tooltip": false
     },
 
-    // ── Audio (WirePlumber) ───────────────────────────────────────────────────
-    "wireplumber": {
+    // ── Audio (PulseAudio or PipeWire's PulseAudio compatibility layer) ────────
+    "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": "󰝟 muted",
         "format-icons": ["󰕿", "󰖀", "󰕾"],
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "scroll-step": 5
     },
@@ -87,7 +89,7 @@
         "format-ethernet": "󰈀 {ifname}",
         "format-disconnected": "󰤭 offline",
         "tooltip-format": "{ifname}: {ipaddr}\n{signalStrength}% signal",
-        "on-click": "ghostty -e nmtui"
+        "on-click": "~/.config/waybar/scripts/network-menu.sh"
     },
 
     // ── Battery ───────────────────────────────────────────────────────────────

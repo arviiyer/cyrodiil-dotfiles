@@ -6,7 +6,7 @@ chosen=$(printf "󰌾  Lock\n󰒲  Sleep\n󰜉  Restart\n󰐥  Shutdown" | rofi 
     -theme-str 'window { width: 220px; anchor: north east; location: north east; x-offset: -12; y-offset: 6; } listview { lines: 4; } inputbar { enabled: false; } element.normal.normal { text-color: #d4c5b0; }')
 
 case "$chosen" in
-    *Lock)     pidof hyprlock || hyprlock ;;
+    *Lock)     pgrep -u "$(id -u)" -x hyprlock || hyprlock ;;
     *Sleep)    systemctl suspend ;;
     *Restart)  systemctl reboot ;;
     *Shutdown) systemctl poweroff ;;

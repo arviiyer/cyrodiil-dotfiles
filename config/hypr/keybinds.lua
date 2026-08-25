@@ -2,8 +2,8 @@
 
 local mainMod = "SUPER"
 local terminal = "/usr/bin/ghostty"
-local browser = "firefox"
-local files = "nautilus --new-window"
+local browser = "xdg-open about:blank"
+local files = [[xdg-open "$HOME"]]
 local launcher = "rofi -show drun"
 
 -- Applications
@@ -14,7 +14,7 @@ hl.bind(mainMod .. " + CTRL + RETURN", hl.dsp.exec_cmd(launcher))
 hl.bind(mainMod .. " + CTRL + E", hl.dsp.exec_cmd("rofi -show calc -no-show-match -no-sort"))
 hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/powermenu.sh"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("~/.config/waybar/scripts/toggle-calendar.sh"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("waypaper"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-picker.sh"))
 
 -- Windows
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -69,8 +69,8 @@ hl.bind(mainMod .. " + CTRL + down", hl.dsp.focus({ workspace = "empty" }))
 
 -- Actions
 hl.bind(mainMod .. " + CTRL + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd([[cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy]]))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd([[pgrep -u "$(id -u)" -x hyprlock || hyprlock]]))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("~/.config/hypr/scripts/clipboard-menu.sh"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("pkill -SIGUSR2 waybar"))
 hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
@@ -103,5 +103,3 @@ hl.bind("code:160", hl.dsp.exec_cmd("hyprlock")) -- KEY_SCREENLOCK / KEY_COFFEE
 -- Keyboard backlight
 hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd("~/.config/hypr/scripts/keyboard-brightness.sh up"))
 hl.bind("XF86KbdBrightnessDown", hl.dsp.exec_cmd("~/.config/hypr/scripts/keyboard-brightness.sh down"))
-hl.bind("code:238", hl.dsp.exec_cmd("~/.config/hypr/scripts/keyboard-brightness.sh up"))
-hl.bind("code:237", hl.dsp.exec_cmd("~/.config/hypr/scripts/keyboard-brightness.sh down"))

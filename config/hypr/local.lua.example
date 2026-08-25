@@ -4,3 +4,21 @@
 -- Example:
 -- hl.monitor({ output = "eDP-1", mode = "preferred", position = "0x0", scale = 1.5 })
 -- hl.monitor({ output = "DP-1", mode = "preferred", position = "1920x0", scale = 1 })
+
+-- Example input preferences:
+-- hl.config({
+--     input = {
+--         kb_layout = "us",
+--         accel_profile = "flat",
+--         touchpad = { natural_scroll = true },
+--     },
+-- })
+
+-- Optional NVIDIA workarounds. Enable only when they are needed by the active
+-- driver, not merely because the machine contains an NVIDIA device.
+-- hl.env("LIBVA_DRIVER_NAME", "nvidia")
+-- hl.env("NVD_BACKEND", "direct")
+-- hl.config({ cursor = { no_hardware_cursors = true } })
+
+-- Disable direct scanout only if games produce blank screens on your driver:
+-- hl.config({ render = { direct_scanout = false } })
