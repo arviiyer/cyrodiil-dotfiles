@@ -297,7 +297,11 @@ bootstrap_paru() {
     git clone https://aur.archlinux.org/paru.git "$build_dir/paru"
     (
         cd "$build_dir/paru"
-        makepkg -si --needed
+        if $ASSUME_YES; then
+            makepkg -si --needed --noconfirm
+        else
+            makepkg -si --needed
+        fi
     )
     rm -rf -- "$build_dir"
     AUR_HELPER=paru
@@ -324,7 +328,11 @@ resolve_aur_helper() {
 
     if pacman -Si paru >/dev/null 2>&1; then
         info "Installing paru from the configured repositories"
-        run sudo pacman -S --needed paru
+        if $ASSUME_YES; then
+            run sudo pacman -S --needed --noconfirm paru
+        else
+            run sudo pacman -S --needed paru
+        fi
         AUR_HELPER=paru
         return
     fi
@@ -335,6 +343,9 @@ resolve_aur_helper() {
 install_packages() {
     local -a official=()
     local -a aur=()
+    local -a install_args=(-S --needed)
+
+    $ASSUME_YES && install_args+=(--noconfirm)
 
     load_package_file "$ROOT/packages/pacman.txt" official
     $WITH_PIPEWIRE && load_package_file "$ROOT/packages/audio.txt" official
@@ -347,13 +358,13 @@ install_packages() {
 
     preflight_official_packages "${official[@]}"
     info "Installing official repository packages"
-    run sudo pacman -S --needed "${official[@]}"
+    run sudo pacman "${install_args[@]}" "${official[@]}"
 
     $WITH_AUR || return 0
     load_package_file "$ROOT/packages/aur.txt" aur
     resolve_aur_helper
     info "Installing optional AUR packages with $AUR_HELPER"
-    run "$AUR_HELPER" -S --needed "${aur[@]}"
+    run "$AUR_HELPER" "${install_args[@]}" "${aur[@]}"
 }
 
 generate_options_config() {
